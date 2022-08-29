@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557760846666",
+    "project_id": "vedio--conference",
+    "storage_bucket": "vedio--conference.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557760846666:android:55a52d9fc4171524bc7fb3",
+        "android_client_info": {
+          "package_name": "com.satyam.vedioconferenceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557760846666-ds802ot86k0ghffs4nu5v584iti6nf9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfHufptYxnTDoiimCOeOdmidyTcYYeN0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557760846666-ds802ot86k0ghffs4nu5v584iti6nf9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
