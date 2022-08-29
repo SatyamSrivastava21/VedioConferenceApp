@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Vedio Conference App</string>
+    <string name="ss">Satyam Srivastava</string>
+    <string name="wb">Welcome Back !</string>
+    <string name="your_email">Your Email</string>
+    <string name="your_password">Your Password</string>
+    <string name="login">Login</string>
+    <string name="join_us">Join Us</string>
+    <string name="wbb">Welcome Back Sign Up Here !</string>
+    <string name="name">Name</string>
+    <string name="already_have_an_account">Already Have an Account</string>
+    <string name="create_an_account">Create An Account</string>
+</resources>
