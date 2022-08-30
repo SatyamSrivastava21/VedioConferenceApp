@@ -15,31 +15,26 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-
+import com.google.firebase.firestore.FirebaseFirestore;
 public class LoginActivity extends AppCompatActivity {
-
     EditText emailBox,passwordBox;
     Button signupBtn,loginBtn;
     FirebaseAuth auth;
-
-
+    FirebaseFirestore database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        database= FirebaseFirestore.getInstance();
         auth= FirebaseAuth.getInstance();
         ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setTitle("Sabar Karo Login U In");
+         progressDialog.setTitle("Sabar Karo Login U In");
         progressDialog.setMessage(" Ho raha hai tumhara internet slow hai, Log In");
-
-
         emailBox=findViewById(R.id.emailBox);
         passwordBox=findViewById(R.id.passwordBox);
        loginBtn=findViewById(R.id.loginBtn);
        signupBtn=findViewById(R.id.createBtn);
-
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+       loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressDialog.show();
@@ -52,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         if (task.isSuccessful())
                         {
-                            Toast.makeText(LoginActivity.this, "Logged In vro!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
                         }else
                         {
                             Toast.makeText(LoginActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();

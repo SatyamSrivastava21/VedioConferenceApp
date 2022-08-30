@@ -13,14 +13,17 @@ import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignupActivity extends AppCompatActivity {
     EditText emailBox,passwordBox,nameBox;
     Button signupBtn,loginBtn;
     FirebaseAuth auth;
+    FirebaseFirestore database;
     ProgressDialog progressDialog;
 
 
@@ -28,6 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        database = FirebaseFirestore.getInstance();
         auth= FirebaseAuth.getInstance();
 
 
@@ -44,9 +48,6 @@ public class SignupActivity extends AppCompatActivity {
 
 
 
-
-
-
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,10 +56,25 @@ public class SignupActivity extends AppCompatActivity {
                 email=emailBox.getText().toString();
                 pass=passwordBox.getText().toString();
                 name=nameBox.getText().toString();
+                User user = new User();
+                user.setEmail(email);
+
+                user.setPass(pass);
+                user.setName(name);
+
                 auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
                         if(task.isSuccessful()){
+                            database.collection("Users")
+                                            .document().set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                         startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                                        }
+                                    });
+
                             Toast.makeText(SignupActivity.this, " Boonza Your Account Is Created Succesfully ENJOY!", Toast.LENGTH_SHORT).show();
 
                     } else {

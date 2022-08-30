@@ -10,4 +10,7 @@
     <string name="name">Name</string>
     <string name="already_have_an_account">Already Have an Account</string>
     <string name="create_an_account">Create An Account</string>
+    <string name="join">Join/Create</string>
+    <string name="share">Share</string>
+    <string name="create_room_first">Create Room First!/Share with your mitra!</string>
 </resources>
